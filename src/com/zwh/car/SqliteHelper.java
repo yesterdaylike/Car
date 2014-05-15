@@ -62,12 +62,43 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		return count;
 	}
 	
+	public String [][] queryItem(String id){
+		if(id.equals("star")){
+			return queryStar();
+		}
+		return queryAll(id);
+		
+	}
+	
 	public String [][] queryAll(String id){
 		SQLiteDatabase db = getWritableDatabase();
 		Cursor cursor = db.query("question_library", 
 				new String[] { "_id", "question", "illustration", "option_a", "option_b", "option_c", "option_d", "correct_answer", "explanation", "star"},
 				"_id >= ? AND _id < ?", 
 				new String[] { id, String.valueOf(Integer.valueOf(id)+100)},
+				null, 
+				null, 
+				null);
+		
+		String [][]str = new String[cursor.getCount()][cursor.getColumnCount()]; 
+		
+		for (String[] strings : str) {
+			cursor.moveToNext();
+			for (int i = 0; i < strings.length; i++) {
+				strings[i] = cursor.getString(i);
+			}
+		}
+		cursor.close();
+		db.close();
+		return str;
+	}
+	
+	public String [][] queryStar(){
+		SQLiteDatabase db = getWritableDatabase();
+		Cursor cursor = db.query("question_library", 
+				new String[] { "_id", "question", "illustration", "option_a", "option_b", "option_c", "option_d", "correct_answer", "explanation", "star"},
+				"star = ?", 
+				new String[] { "1" },
 				null, 
 				null, 
 				null);

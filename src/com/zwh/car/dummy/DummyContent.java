@@ -31,7 +31,6 @@ public class DummyContent {
 	public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
 	static {
-		// Add 3 sample items.
 		addItem(new DummyItem("1", "  1-100"));
 		addItem(new DummyItem("101", "101-200"));
 		addItem(new DummyItem("201", "201-300"));
@@ -42,6 +41,7 @@ public class DummyContent {
 		addItem(new DummyItem("701", "701-800"));
 		addItem(new DummyItem("801", "801-900"));
 		addItem(new DummyItem("901", "901-973"));
+		addItem(new DummyItem("star", "¼ÓÐÇ"));
 	}
 
 	private static void addItem(DummyItem item) {

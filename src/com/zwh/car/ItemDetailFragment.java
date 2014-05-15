@@ -58,7 +58,7 @@ public class ItemDetailFragment extends Fragment {
 	private final Object mDiskCacheLock = new Object();
 	private boolean mDiskCacheStarting = true;
 	private static final int DISK_CACHE_SIZE = 1024 * 1024 * 10; // 10MB
-	private static final String DISK_CACHE_SUBDIR = "thumbnails";
+	//private static final String DISK_CACHE_SUBDIR = "thumbnails";
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -111,7 +111,7 @@ public class ItemDetailFragment extends Fragment {
 			if( null == mSqliteHelper ){
 				mSqliteHelper = new SqliteHelper(this.getActivity());
 			}
-			String[][] mStringArray = mSqliteHelper.queryAll(mItem.id);
+			String[][] mStringArray = mSqliteHelper.queryItem(mItem.id);
 			//Log.i("getImageFromAssetsFile","length:" + mStringArray.length);
 			for (int i = 0; i < mStringArray.length; i++ ) {//mStringArray.length
 				String[] strings = mStringArray[i];

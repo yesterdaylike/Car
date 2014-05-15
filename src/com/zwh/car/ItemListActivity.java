@@ -47,6 +47,7 @@ ItemListFragment.Callbacks {
 		}
 		// TODO: If exposing deep links into your app, handle intents here.
 		//DummyContent.buildFile(this);
+		this.onItemSelected("1");
 	}
 
 	/**
